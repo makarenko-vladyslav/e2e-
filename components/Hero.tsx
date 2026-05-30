@@ -1,4 +1,3 @@
-
 "use client";
 import { useLocale } from "@/lib/i18n";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -9,13 +8,13 @@ export default function Hero() {
   const { t } = useLocale();
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
 
   const stats = t("hero.stats") as { value: string; label: string }[];
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-primary">
+    <section ref={ref} className="relative min-h-[70vh] flex items-center pt-32 pb-16 overflow-hidden bg-primary">
       {/* Background Image with Parallax */}
       <motion.div 
         style={{ y, opacity }}
@@ -24,7 +23,7 @@ export default function Hero() {
         <img 
           src={t("hero.imageUrl")} 
           alt="Barber precision" 
-          className="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+          className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
         />
         {/* Technical Grid Overlay */}
         <div className="absolute inset-0 bg-tech-grid-dark opacity-30 mix-blend-overlay" />
@@ -41,12 +40,12 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-accent/30 bg-accent/10 mb-8">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-accent/30 bg-accent/10 mb-6">
               <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
               <span className="text-accent font-display text-xs tracking-widest uppercase">{t("hero.badge")}</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-display font-bold text-white leading-[1.1] mb-6 tracking-tight">
+            <h1 className="text-4xl md:text-6xl font-display font-bold text-white leading-[1.1] mb-6 tracking-tight">
               {t("hero.title").split('.').map((part: string, i: number, arr: any[]) => (
                 <span key={i}>
                   {part}{i < arr.length - 1 ? <span className="text-accent">.</span> : ''}
@@ -55,11 +54,11 @@ export default function Hero() {
               ))}
             </h1>
             
-            <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-xl font-light leading-relaxed">
+            <p className="text-lg text-slate-300 mb-8 max-w-xl font-light leading-relaxed">
               {t("hero.subtitle")}
             </p>
             
-            <div className="flex flex-wrap gap-4 mb-16">
+            <div className="flex flex-wrap gap-4 mb-12">
               <Button variant="primary">
                 {t("hero.cta")}
                 <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -89,7 +88,7 @@ export default function Hero() {
         </div>
 
         {/* Right: Technical Visual (Hidden on mobile for cleaner look) */}
-        <div className="hidden lg:block relative h-[600px]">
+        <div className="hidden lg:block relative h-[450px]">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -101,7 +100,7 @@ export default function Hero() {
               <motion.div 
                 animate={{ y: ["0%", "100%", "0%"] }}
                 transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 left-0 w-full h-[2px] bg-accent shadow-[0_0_15px_hsl(210_100%_45%)] z-20"
+                className="absolute top-0 left-0 w-full h-[2px] bg-accent shadow-[0_0_15px_hsl(215_90%_45%)] z-20"
               />
               <img 
                 src="https://picsum.photos/seed/barber-close/600/800" 

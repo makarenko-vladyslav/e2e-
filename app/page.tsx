@@ -1,8 +1,8 @@
-
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
 import Philosophy from "@/components/Philosophy";
+import Pricing from "@/components/Pricing";
 import Services from "@/components/Services";
 import Configurator from "@/components/Configurator";
 import Hygiene from "@/components/Hygiene";
@@ -23,6 +23,7 @@ export default function Home() {
         <Hero />
         <SocialProof />
         <Philosophy />
+        <Pricing />
         <Services />
         <Configurator />
         <Hygiene />
