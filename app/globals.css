@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+
+@theme {
+  /* Precise, Data-Driven Barbershop Palette */
+  --color-primary: hsl(222 47% 11%); /* Deep Tech Slate */
+  --color-accent: hsl(210 100% 45%); /* Electric Cyan/Blue for precision */
+  --color-accent-dark: hsl(210 100% 35%);
+  --color-accent-light: hsl(210 100% 90%);
+  --color-bg-white: hsl(0 0% 100%);
+  --color-bg-light: hsl(210 20% 98%); /* Very cool crisp gray */
+  --color-bg-dark: hsl(222 47% 8%);
+  --color-text-main: hsl(222 15% 30%);
+  --color-text-muted: hsl(222 10% 50%);
+  --color-border-light: hsl(222 20% 90%);
+  
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg-white);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-primary);
+}
+
+/* Technical Grid Background Pattern */
+.bg-tech-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, hsl(222 20% 90% / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(222 20% 90% / 0.5) 1px, transparent 1px);
+}
+
+.bg-tech-grid-dark {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, hsl(210 100% 45% / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(210 100% 45% / 0.05) 1px, transparent 1px);
+}
+
+/* Blueprint Image Fallback */
+.img-fallback {
+  background: linear-gradient(135deg, var(--color-bg-light) 0%, var(--color-border-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.img-fallback::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-size: 20px 20px;
+  background-image: linear-gradient(to right, var(--color-accent-light) 1px, transparent 1px), linear-gradient(to bottom, var(--color-accent-light) 1px, transparent 1px);
+  opacity: 0.3;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(222 20% 80%);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* Utility for precise lines */
+.data-line {
+  position: relative;
+}
+.data-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background-color: var(--color-accent);
+  transform: translateY(-50%);
+}

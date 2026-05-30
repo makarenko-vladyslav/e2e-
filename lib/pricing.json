@@ -1,0 +1,18 @@
+
+{
+  "currency": "₴",
+  "services": [
+    { "id": "haircut", "name": "Чоловіча стрижка", "price": 600, "time": 60 },
+    { "id": "beard", "name": "Моделювання бороди", "price": 450, "time": 45 },
+    { "id": "machine", "name": "Стрижка під машинку", "price": 400, "time": 45 },
+    { "id": "long", "name": "Подовжена стрижка", "price": 700, "time": 75 },
+    { "id": "shave", "name": "Королівське гоління", "price": 500, "time": 45 },
+    { "id": "camo_hair", "name": "Камуфлювання волосся", "price": 350, "time": 30 },
+    { "id": "camo_beard", "name": "Камуфлювання бороди", "price": 350, "time": 30 },
+    { "id": "wax", "name": "Видалення воском (1 зона)", "price": 150, "time": 15 },
+    { "id": "mask", "name": "Чорна маска", "price": 200, "time": 20 }
+  ],
+  "combos": [
+    { "ids": ["haircut", "beard"], "discount": 150, "name": "Комплекс: Стрижка + Борода" }
+  ]
+}
