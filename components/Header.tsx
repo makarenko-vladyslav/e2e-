@@ -1,118 +1,143 @@
 "use client";
 import { useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useLocale } from "@/lib/i18n";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
   const { t, locale, setLocale } = useLocale();
-  const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 50);
-  });
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
-    { name: t('nav.services') as string, href: "#services" },
-    { name: t('nav.calculator') as string, href: "#calculator" },
-    { name: t('nav.advantages') as string, href: "#advantages" },
-    { name: t('nav.reviews') as string, href: "#reviews" },
-    { name: t('nav.faq') as string, href: "#faq" },
+    { href: "#services", label: t("nav.services") },
+    { href: "#calculator", label: t("nav.calculator") },
+    { href: "#why-us", label: t("nav.whyUs") },
+    { href: "#process", label: t("nav.process") },
+    { href: "#reviews", label: t("nav.reviews") },
+    { href: "#faq", label: t("nav.faq") },
   ];
 
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-4" : "bg-transparent py-6"
+        scrolled ? "bg-white/95 backdrop-blur-md shadow-sm py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className={`flex items-center gap-2 font-display font-bold text-2xl tracking-tight z-50 ${scrolled ? "text-primary" : "text-white"}`}>
-          <svg className={`w-8 h-8 ${scrolled ? "text-accent" : "text-accent-light"}`} viewBox="0 0 32 32" fill="none">
-            <path d="M16 8C16 8 10 14 10 19C10 22.3137 12.6863 25 16 25C19.3137 25 22 22.3137 22 19C22 14 16 8 16 8Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-            <path d="M16 15L16 21" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-            <path d="M13 18L15 20" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-          </svg>
-          Клінінг Лев
+        {/* Logo */}
+        <a href="#" className="flex items-center gap-2 group">
+          <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+            scrolled ? "bg-accent" : "bg-white"
+          }`}>
+            <svg viewBox="0 0 32 32" className={`w-6 h-6 ${scrolled ? "stroke-white" : "stroke-accent"}`}>
+              <path d="M16 8L24 14V24H8V14L16 8Z" fill="none" strokeWidth="2.5" strokeLinejoin="round" />
+              <path d="M16 12V20M12 16H20" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
+          </div>
+          <span className={`font-display font-bold text-xl tracking-tight transition-colors ${
+            scrolled ? "text-primary" : "text-white drop-shadow-md"
+          }`}>
+            Прибирання Карпати
+          </span>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <a 
-              key={link.name} 
+              key={link.href} 
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-accent ${scrolled ? "text-text-main" : "text-white/90"}`}
+              className={`text-sm font-medium transition-colors hover:text-accent ${
+                scrolled ? "text-text-main" : "text-white/90 hover:text-white drop-shadow-sm"
+              }`}
             >
-              {link.name}
+              {link.label as string}
             </a>
           ))}
-          
-          <div className="flex items-center gap-2 ml-4 border-l border-white/20 pl-6">
-            <button 
-              onClick={() => setLocale('uk')} 
-              className={`text-sm font-bold transition-colors ${locale === 'uk' ? (scrolled ? 'text-accent' : 'text-white') : (scrolled ? 'text-text-muted' : 'text-white/50')}`}
-            >
-              UK
-            </button>
-            <span className={scrolled ? "text-text-muted" : "text-white/50"}>/</span>
-            <button 
-              onClick={() => setLocale('en')} 
-              className={`text-sm font-bold transition-colors ${locale === 'en' ? (scrolled ? 'text-accent' : 'text-white') : (scrolled ? 'text-text-muted' : 'text-white/50')}`}
-            >
-              EN
-            </button>
-          </div>
+        </nav>
 
-          <a 
-            href="tel:+380000000000" 
-            className={`px-6 py-2.5 rounded-full font-semibold transition-all hover:scale-105 ${
-              scrolled ? "bg-primary text-white hover:bg-primary-light shadow-lg" : "bg-white text-primary hover:bg-white/90"
+        {/* Actions */}
+        <div className="hidden lg:flex items-center gap-4">
+          <button 
+            onClick={() => setLocale(locale === 'uk' ? 'en' : 'uk')}
+            className={`text-sm font-bold uppercase px-2 py-1 rounded transition-colors ${
+              scrolled ? "text-text-muted hover:bg-bg-light" : "text-white/80 hover:bg-white/10"
             }`}
           >
-            +38 000 000 00 00
+            {locale}
+          </button>
+          <a 
+            href="#calculator"
+            className={`px-6 py-2.5 rounded-full font-medium transition-all ${
+              scrolled 
+                ? "bg-primary text-white hover:bg-primary-light shadow-md hover:shadow-lg" 
+                : "bg-white text-primary hover:bg-bg-light shadow-lg"
+            }`}
+          >
+            {t("nav.cta") as string}
           </a>
-        </nav>
+        </div>
 
         {/* Mobile Toggle */}
         <button 
-          className={`md:hidden z-50 p-2 ${scrolled || mobileMenuOpen ? "text-primary" : "text-white"}`}
+          className="lg:hidden p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg viewBox="0 0 24 24" className={`w-6 h-6 ${scrolled ? "stroke-primary" : "stroke-white"}`} fill="none" strokeWidth="2">
             {mobileMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path d="M6 18L18 6M6 6l12 12" strokeLinecap="round" strokeLinejoin="round" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path d="M4 6h16M4 12h16M4 18h16" strokeLinecap="round" strokeLinejoin="round" />
             )}
           </svg>
         </button>
+      </div>
 
-        {/* Mobile Menu */}
+      {/* Mobile Menu */}
+      <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute top-0 left-0 w-full h-screen bg-white flex flex-col items-center justify-center gap-8 z-40"
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 right-0 bg-white shadow-xl border-t border-border lg:hidden"
           >
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-2xl font-display font-bold text-primary"
-              >
-                {link.name}
-              </a>
-            ))}
-            <div className="flex gap-4 mt-4">
-              <button onClick={() => { setLocale('uk'); setMobileMenuOpen(false); }} className={`text-xl font-bold ${locale === 'uk' ? 'text-accent' : 'text-text-muted'}`}>UK</button>
-              <button onClick={() => { setLocale('en'); setMobileMenuOpen(false); }} className={`text-xl font-bold ${locale === 'en' ? 'text-accent' : 'text-text-muted'}`}>EN</button>
+            <div className="flex flex-col p-6 gap-4">
+              {navLinks.map((link) => (
+                <a 
+                  key={link.href} 
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-lg font-medium text-primary py-2 border-b border-border/50"
+                >
+                  {link.label as string}
+                </a>
+              ))}
+              <div className="flex items-center justify-between mt-4">
+                <button 
+                  onClick={() => setLocale(locale === 'uk' ? 'en' : 'uk')}
+                  className="text-primary font-bold uppercase px-4 py-2 bg-bg-light rounded-lg"
+                >
+                  {locale === 'uk' ? 'English' : 'Українська'}
+                </button>
+                <a 
+                  href="#calculator"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="px-6 py-3 bg-accent text-white rounded-full font-medium text-center"
+                >
+                  {t("nav.cta") as string}
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </header>
   );
 }

@@ -1,105 +1,120 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useLocale } from "@/lib/i18n";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 export default function Hero() {
   const { t } = useLocale();
-  const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 1000], [0, 300]);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
+
+  const stats = t("hero.stats") as Array<{ value: string; label: string }>;
 
   return (
-    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-primary">
-      {/* Parallax Background Image */}
-      <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
+    <section ref={containerRef} className="relative min-h-[100svh] flex items-center pt-24 pb-16 overflow-hidden">
+      {/* Background Image with Parallax */}
+      <motion.div 
+        style={{ y }}
+        className="absolute inset-0 z-0"
+      >
         <img 
-          src={t('hero.imageUrl') as string} 
-          alt="Clean interior" 
+          src={t("hero.imageUrl") as string} 
+          alt="Cleaning" 
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/60 to-primary/95 mix-blend-multiply" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent" />
       </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
-        
         {/* Text Content */}
-        <div className="lg:col-span-7 pt-20">
+        <motion.div 
+          style={{ opacity }}
+          className="lg:col-span-7 text-white"
+        >
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6"
           >
-            ✨ {t('hero.badge') as string}
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-sm font-medium tracking-wide">{t("hero.badge") as string}</span>
           </motion.div>
-          
+
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight mb-6"
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] tracking-tight mb-6 text-white"
           >
-            {t('hero.title') as string}
+            {t("hero.title") as string}
           </motion.h1>
-          
+
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-white/80 max-w-xl mb-10 leading-relaxed"
           >
-            {t('hero.subtitle') as string}
+            {t("hero.subtitle") as string}
           </motion.p>
-          
+
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-wrap gap-4"
+            transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4"
           >
-            <a href="#calculator" className="px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-full font-bold transition-all hover:scale-105 shadow-[0_0_30px_hsl(185_80%_40%/0.3)]">
-              {t('hero.ctaPrimary') as string}
+            <a 
+              href="#calculator"
+              className="px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-full font-bold text-lg text-center transition-all shadow-md hover:shadow-lg hover:-translate-y-1"
+            >
+              {t("hero.ctaPrimary") as string}
             </a>
-            <a href="#services" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/20 rounded-full font-bold transition-all">
-              {t('hero.ctaSecondary') as string}
+            <a 
+              href="#services"
+              className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-full font-bold text-lg text-center transition-all backdrop-blur-sm"
+            >
+              {t("hero.ctaSecondary") as string}
             </a>
           </motion.div>
-        </div>
+        </motion.div>
 
-        {/* Floating Trust Card */}
+        {/* Floating Stats Card */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+          initial={{ opacity: 0, scale: 0.9, rotate: 2 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 100, delay: 0.5 }}
-          className="lg:col-span-5 hidden lg:block"
+          transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
+          className="lg:col-span-5 hidden md:block"
         >
-          <div className="dark-glass p-8 rounded-3xl shadow-2xl relative animate-float">
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent/30 rounded-full blur-2xl" />
-            <div className="flex items-start gap-6">
-              <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
-                <svg className="w-8 h-8 text-accent-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-2xl font-display font-bold text-white mb-2">{(t('hero.floatingCard') as any).title}</h3>
-                <p className="text-white/70 leading-relaxed">{(t('hero.floatingCard') as any).desc}</p>
-              </div>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-              <div className="flex -space-x-3">
-                {[1,2,3,4].map(i => (
-                  <img key={i} src={`https://picsum.photos/seed/avatar${i}/100/100`} className="w-10 h-10 rounded-full border-2 border-primary object-cover" alt="Client" />
-                ))}
-              </div>
-              <div className="text-right">
-                <div className="flex text-accent-light text-sm">★★★★★</div>
-                <span className="text-white/60 text-xs font-medium">500+ відгуків</span>
-              </div>
+          <div className="bg-white rounded-3xl p-8 relative overflow-hidden shadow-xl border border-border">
+            <div className="grid gap-8">
+              {stats.map((stat, i) => (
+                <div key={i} className="flex items-center gap-6">
+                  <div className="w-16 h-16 rounded-2xl bg-bg-light flex items-center justify-center shrink-0">
+                    <span className="text-2xl font-display font-bold text-accent">{stat.value}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-primary">{stat.label}</h3>
+                    <div className="w-full h-1.5 bg-bg-light rounded-full mt-2 overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ delay: 0.8 + (i * 0.2), duration: 1 }}
+                        className="h-full bg-accent rounded-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

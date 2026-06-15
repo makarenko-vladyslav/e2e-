@@ -1,69 +1,68 @@
 "use client";
-import { motion } from "framer-motion";
 import { useLocale } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
+import { motion } from "framer-motion";
+
+const icons: Record<string, React.ReactNode> = {
+  shield: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+      <path d="M12 22S8 18 8 12V6L12 2L16 6V12C16 18 12 22 12 22Z" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M9 12L11 14L15 10" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  machine: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+      <rect x="4" y="14" width="16" height="8" rx="2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M8 14V10C8 7.79086 9.79086 6 12 6C14.2091 6 16 7.79086 16 10V14" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M12 6V2" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M10 2H14" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  flask: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+      <path d="M9 3H15" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M10 3V8L5 18C4.44772 19.1046 5.25 20.5 6.5 20.5H17.5C18.75 20.5 19.5523 19.1046 19 18L14 8V3" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M6.5 15H17.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  clock: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-10 h-10">
+      <circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M12 6V12L16 14" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+};
 
 export default function Trust() {
   const { t } = useLocale();
-  const data = t('trust') as any;
+  const items = t("trust.items") as Array<{ title: string; description: string; icon: string }>;
 
   return (
-    <section className="py-24 bg-primary text-white relative overflow-hidden">
+    <section className="section-padding bg-bg-light border-y border-border">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
-          <div>
-            <SectionHeading 
-              badge={data.badge}
-              title={data.title}
-              subtitle={data.subtitle}
-              light
-            />
-            
-            <div className="space-y-6 mt-8">
-              {[
-                { c: "bg-red-500", l: "Санвузол (унітаз)" },
-                { c: "bg-yellow-500", l: "Санвузол (раковина, ванна)" },
-                { c: "bg-blue-500", l: "Скло та дзеркала" },
-                { c: "bg-green-500", l: "Кухня та житлові кімнати" }
-              ].map((item, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10"
-                >
-                  <div className={`w-10 h-10 rounded-full ${item.c} shadow-[0_0_15px_currentColor] opacity-80`} />
-                  <span className="font-medium text-lg">{item.l}</span>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+        <SectionHeading 
+          badge={t("trust.badge")}
+          title={t("trust.title")}
+        />
 
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="relative h-[600px] rounded-[2rem] overflow-hidden"
-          >
-            <img src={data.imageUrl} alt="Eco cleaning tools" className="absolute inset-0 w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent" />
-            
-            {/* Floating Badges */}
-            <div className="absolute bottom-10 left-10 right-10 flex gap-4">
-              <div className="glass-panel p-4 rounded-2xl flex-1">
-                <div className="text-accent font-bold mb-1">Sutter Professional</div>
-                <div className="text-primary text-sm font-medium">Сертифіковано в ЄС</div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {items.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 mx-auto bg-white rounded-2xl shadow-sm border border-border flex items-center justify-center text-accent mb-6 relative">
+                <div className="absolute inset-0 bg-accent/5 rounded-2xl scale-110 -z-10" />
+                {icons[item.icon]}
               </div>
-              <div className="glass-panel p-4 rounded-2xl flex-1">
-                <div className="text-accent font-bold mb-1">Kiehl</div>
-                <div className="text-primary text-sm font-medium">Гіпоалергенно</div>
-              </div>
-            </div>
-          </motion.div>
-
+              <h3 className="text-xl font-display font-bold text-primary mb-3">{item.title}</h3>
+              <p className="text-text-muted">{item.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

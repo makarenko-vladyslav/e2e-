@@ -1,14 +1,15 @@
 {
-  "basePricePerSqm": 30,
-  "multipliers": {
-    "standard": 1,
-    "deep": 2.1,
-    "repair": 3.0
+  "currency": "грн",
+  "basePrices": {
+    "maintenance": 40,
+    "general": 80,
+    "post-repair": 120
   },
   "extras": {
     "windows": 250,
+    "fridge": 400,
     "oven": 400,
-    "fridge": 450
+    "dry-cleaning": 800
   },
-  "minPrice": 1200
+  "minPrice": 1400
 }
