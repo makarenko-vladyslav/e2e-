@@ -1,18 +1,18 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import SocialProof from "@/components/SocialProof";
-import Philosophy from "@/components/Philosophy";
-import Pricing from "@/components/Pricing";
+import Advantages from "@/components/Advantages";
 import Services from "@/components/Services";
-import Configurator from "@/components/Configurator";
-import Hygiene from "@/components/Hygiene";
-import Guarantee from "@/components/Guarantee";
-import Gallery from "@/components/Gallery";
+import ExtraServices from "@/components/ExtraServices";
+import CalculatorSection from "@/components/CalculatorSection";
+import Trust from "@/components/Trust";
 import Process from "@/components/Process";
+import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
+import Gallery from "@/components/Gallery";
+import Team from "@/components/Team";
 import FAQ from "@/components/FAQ";
 import CTABanner from "@/components/CTABanner";
-import Location from "@/components/Location";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -22,18 +22,18 @@ export default function Home() {
       <main>
         <Hero />
         <SocialProof />
-        <Philosophy />
-        <Pricing />
+        <Advantages />
         <Services />
-        <Configurator />
-        <Hygiene />
-        <Guarantee />
-        <Gallery />
+        <ExtraServices />
+        <CalculatorSection />
+        <Trust />
         <Process />
+        <BeforeAfter />
         <Testimonials />
+        <Gallery />
+        <Team />
         <FAQ />
         <CTABanner />
-        <Location />
       </main>
       <Footer />
     </>

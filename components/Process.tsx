@@ -1,52 +1,48 @@
-
 "use client";
+import { motion } from "framer-motion";
 import { useLocale } from "@/lib/i18n";
 import SectionHeading from "./SectionHeading";
-import { motion } from "framer-motion";
 
 export default function Process() {
   const { t } = useLocale();
-  const steps = t("process.steps") as { title: string; desc: string }[];
+  const data = t('process') as any;
 
   return (
-    <section className="py-24 bg-bg-light">
+    <section className="py-24 bg-bg-light relative">
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeading 
-          badge={t("process.badge")}
-          title={t("process.title")}
-          subtitle={t("process.subtitle")}
-          centered={true}
+          badge={data.badge}
+          title={data.title}
+          centered
         />
 
-        <div className="relative mt-16 max-w-4xl mx-auto">
+        <div className="relative max-w-4xl mx-auto mt-16">
           {/* Vertical Line */}
-          <div className="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-[2px] bg-slate-200 md:-translate-x-1/2" />
+          <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 md:-translate-x-1/2" />
 
-          {steps.map((step, i) => {
-            const isEven = i % 2 === 0;
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className={`relative flex items-center mb-12 last:mb-0 ${isEven ? 'md:flex-row-reverse' : ''}`}
-              >
-                {/* Center Node */}
-                <div className="absolute left-0 md:left-1/2 w-14 h-14 bg-white border-2 border-accent rounded-full flex items-center justify-center z-10 md:-translate-x-1/2 shadow-lg">
-                  <span className="font-mono font-bold text-primary text-lg">0{i + 1}</span>
+          <div className="space-y-12">
+            {data.steps.map((step: any, idx: number) => (
+              <div key={idx} className={`relative flex items-center md:justify-between ${idx % 2 === 0 ? "md:flex-row-reverse" : ""}`}>
+                
+                {/* Number Node */}
+                <div className="absolute left-0 md:left-1/2 w-14 h-14 bg-white border-4 border-bg-light rounded-full flex items-center justify-center text-xl font-display font-bold text-accent shadow-lg md:-translate-x-1/2 z-10">
+                  {idx + 1}
                 </div>
 
-                {/* Content */}
-                <div className={`ml-20 md:ml-0 md:w-1/2 ${isEven ? 'md:pl-16' : 'md:pr-16 md:text-right'}`}>
-                  <div className="bg-white p-6 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-                    <h4 className="text-xl font-bold text-primary mb-2">{step.title}</h4>
-                    <p className="text-text-muted text-sm">{step.desc}</p>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                {/* Content Card */}
+                <motion.div 
+                  initial={{ opacity: 0, y: 20, x: idx % 2 === 0 ? 20 : -20 }}
+                  whileInView={{ opacity: 1, y: 0, x: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  className={`ml-20 md:ml-0 w-full md:w-[45%] bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow`}
+                >
+                  <h3 className="text-2xl font-display font-bold text-primary mb-3">{step.title}</h3>
+                  <p className="text-text-muted leading-relaxed">{step.desc}</p>
+                </motion.div>
+
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

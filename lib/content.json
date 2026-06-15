@@ -1,171 +1,490 @@
-
 {
   "defaultLocale": "uk",
   "locales": {
     "uk": {
       "nav": {
         "services": "Послуги",
-        "hygiene": "Стандарт",
-        "gallery": "Портфоліо",
-        "faq": "FAQ",
-        "contact": "Контакти",
-        "book": "Записатися"
+        "calculator": "Калькулятор",
+        "advantages": "Переваги",
+        "reviews": "Відгуки",
+        "faq": "FAQ"
       },
       "hero": {
-        "badge": "SYS.STATUS: ONLINE",
-        "title": "Точна чоловіча стрижка. Без компромісів.",
-        "subtitle": "Персональний барбершоп у Львові. Класична школа, медична стерильність та 100% відповідальність власника за результат. Жодних стажерів.",
-        "cta": "Ініціювати запис",
-        "secondaryCta": "Переглянути протокол",
-        "imageUrl": "https://picsum.photos/seed/barber-precision/1200/1600",
-        "stats": [
-          { "value": "100%", "label": "Увага власника" },
-          { "value": "3", "label": "Етапи стерилізації" },
-          { "value": "0", "label": "Прихованих доплат" }
-        ]
+        "badge": "Клінінг №1 для сучасних ЖК",
+        "title": "Бездоганна чистота. Сьогодні, а не через тиждень.",
+        "subtitle": "Професійний клінінг у Львові з гарантією 24 години. Еко-хімія, матеріальна відповідальність до 20 000 грн та фіксована ціна.",
+        "ctaPrimary": "Дізнатись вартість за 30с",
+        "ctaSecondary": "Наші послуги",
+        "floatingCard": {
+          "title": "Швидкий виїзд",
+          "desc": "Подача клінера протягом 3 годин або знижка 200 грн"
+        },
+        "imageUrl": "https://picsum.photos/seed/lviv-modern-interior/1600/1000"
       },
       "socialProof": {
-        "items": ["Reuzel", "Uppercut Deluxe", "Proraso", "Dyson Pro", "Wahl Professional", "Andis"]
+        "title": "Нам довіряють мешканці провідних ЖК Львова",
+        "stats": [
+          { "value": "500+", "label": "Задоволених клієнтів" },
+          { "value": "24/7", "label": "Підтримка" },
+          { "value": "20k", "label": "Страхування майна" }
+        ]
       },
-      "philosophy": {
-        "badge": "АНАЛІТИКА ПІДХОДУ",
-        "title": "Чому конвеєрні мережі програють",
-        "subtitle": "Ми проаналізували ринок і створили алгоритм ідеального візиту, виключивши всі змінні, що призводять до неякісного результату.",
-        "cards": [
+      "advantages": {
+        "badge": "Чому ми",
+        "title": "Системний підхід до чистоти",
+        "subtitle": "Ми знаємо, як доглядати за австрійською цеглою, матовими фасадами та дорогою технікою.",
+        "items": [
           {
-            "title": "Проблема: Плинність кадрів",
-            "desc": "У мережах ви часто потрапляєте до стажерів або нових майстрів, втрачаючи стабільність результату.",
-            "solution": "Рішення: Прямий запис до власника. Стабільна якість роками."
+            "title": "Фіксована ціна",
+            "desc": "Вартість розраховується в онлайн-калькуляторі і не змінюється після приїзду фахівця.",
+            "icon": "calculator"
           },
           {
-            "title": "Проблема: Приховані прайси",
-            "desc": "Миття голови, стайлінг чи консультація часто додаються до чеку в кінці візиту.",
-            "solution": "Рішення: All-inclusive ціна. Все необхідне вже враховано."
+            "title": "Еко-хімія Sutter та Kiehl",
+            "desc": "Використовуємо сертифіковані засоби, безпечні для алергіків, немовлят та тварин. Ніякого різкого запаху.",
+            "icon": "leaf"
           },
           {
-            "title": "Проблема: Сумнівна гігієна",
-            "desc": "Інструменти просто збризкуються спреєм між клієнтами, що не вбиває віруси.",
-            "solution": "Рішення: Медичний протокол. Крафт-пакет відкривається при вас."
+            "title": "Матеріальна відповідальність",
+            "desc": "Страхування майна на суму до 20 000 грн за власний кошт компанії.",
+            "icon": "shield"
+          },
+          {
+            "title": "Гарантія 24 години",
+            "desc": "Безкоштовне усунення будь-яких недоліків протягом доби після візиту клінера.",
+            "icon": "clock"
           }
         ]
       },
       "services": {
-        "badge": "КАТАЛОГ ПОСЛУГ",
-        "title": "Протоколи обслуговування",
-        "subtitle": "Чіткий перелік послуг із фіксованою вартістю та прогнозованим часом виконання.",
-        "categories": [
+        "badge": "Основні послуги",
+        "title": "Що ми прибираємо",
+        "items": [
           {
-            "name": "Основні комплекси",
-            "items": [
-              { "name": "Чоловіча стрижка", "desc": "Повний комплекс: консультація, миття, стрижка ножицями/машинкою, повторне миття, преміум стайлінг.", "price": "600 ₴", "time": "60 хв" },
-              { "name": "Моделювання бороди", "desc": "Надання форми, розпарювання гарячим рушником, небезпечна бритва, догляд оліями Proraso.", "price": "450 ₴", "time": "45 хв" },
-              { "name": "Комплекс: Стрижка + Борода", "desc": "Оптимізований протокол для повного оновлення образу за один візит.", "price": "900 ₴", "time": "90 хв" }
-            ]
+            "title": "Підтримуюче прибирання",
+            "desc": "Регулярне прибирання для підтримки ідеальної чистоти. Знепилення, миття підлоги, чищення сантехніки.",
+            "price": "від 1200 грн",
+            "imageUrl": "https://picsum.photos/seed/cleaning-standard/800/600"
           },
           {
-            "name": "Специфічні протоколи",
-            "items": [
-              { "name": "Стрижка під машинку", "desc": "Використання 1-2 насадок, ідеальний фейд, миття голови.", "price": "400 ₴", "time": "45 хв" },
-              { "name": "Подовжена стрижка", "desc": "Робота виключно ножицями для волосся середньої та великої довжини.", "price": "700 ₴", "time": "75 хв" },
-              { "name": "Королівське гоління", "desc": "Традиційне гоління небезпечною бритвою з триетапним розпарюванням.", "price": "500 ₴", "time": "45 хв" }
-            ]
+            "title": "Генеральне прибирання",
+            "desc": "Глибоке очищення всіх поверхонь, включаючи важкодоступні місця, знежирення кухні, миття плитки.",
+            "price": "від 2500 грн",
+            "imageUrl": "https://picsum.photos/seed/cleaning-deep/800/600"
           },
           {
-            "name": "Додаткові опції",
-            "items": [
-              { "name": "Камуфлювання сивини", "desc": "Тонування волосся або бороди для природного приховування сивини.", "price": "350 ₴", "time": "30 хв" },
-              { "name": "Видалення волосся воском", "desc": "Ніс, вуха або міжбрів'я. Швидко та безболісно.", "price": "150 ₴", "time": "15 хв" },
-              { "name": "Чорна маска", "desc": "Глибоке очищення пор обличчя під час основної процедури.", "price": "200 ₴", "time": "20 хв" }
-            ]
+            "title": "Післяремонтне прибирання",
+            "desc": "Видалення будівельного пилу, залишків фарби, скотчу та цементу. Підготовка житла до заїзду.",
+            "price": "від 3500 грн",
+            "imageUrl": "https://picsum.photos/seed/cleaning-post-repair/800/600"
+          },
+          {
+            "title": "Airbnb Special",
+            "desc": "Швидке прибирання між заїздами гостей, зміна постелі, поповнення розхідників.",
+            "price": "від 1000 грн",
+            "imageUrl": "https://picsum.photos/seed/cleaning-airbnb/800/600"
           }
         ]
       },
-      "hygiene": {
-        "badge": "БЕЗПЕКА ДАНИХ ТА ТІЛА",
-        "title": "Медичний стандарт стерилізації",
-        "subtitle": "Ми не покладаємося на випадок. Кожен інструмент проходить суворий триетапний протокол очищення перед тим, як торкнутися вашої шкіри.",
-        "steps": [
-          { "title": "Ультразвукова очистка", "desc": "Видалення мікрочастинок шкіри та волосся у спеціальній ванні з розчином." },
-          { "title": "Хімічна дезінфекція", "desc": "Замочування у сертифікованому розчині для знищення бактерій та вірусів." },
-          { "title": "Термічна обробка (Сухожар)", "desc": "Стерилізація при 180°C. Інструмент запаковується в крафт-пакет, який відкривається виключно при вас." }
+      "extraServices": {
+        "badge": "Додатково",
+        "title": "Спеціалізовані послуги",
+        "items": [
+          "Миття вікон (стандартне та після ремонту)",
+          "Хімчистка диванів, крісел та матраців",
+          "Хімчистка килимового покриття",
+          "Миття духовки, холодильника, мікрохвильовки",
+          "Миття витяжки від жиру",
+          "Прасування речей (погодинно)",
+          "Очищення міжплиткових швів",
+          "Прибирання засклених лоджій"
         ]
       },
-      "guarantee": {
-        "badge": "ГАРАНТІЯ ЯКОСТІ",
-        "title": "Протокол 72 годин",
-        "desc": "Ми працюємо на результат. Якщо протягом 3 днів після візиту ви помітили неточність у стрижці або вам некомфортно вкладати волосся вдома — ми виправимо це абсолютно безкоштовно. Це наша відповідальність за кожен міліметр.",
-        "cta": "Ознайомитись з умовами"
+      "calculator": {
+        "badge": "Онлайн розрахунок",
+        "title": "Дізнайтесь точну вартість",
+        "subtitle": "Без прихованих платежів. Ціна фіксується під час замовлення.",
+        "areaLabel": "Площа приміщення (м²)",
+        "typeLabel": "Тип прибирання",
+        "types": {
+          "standard": "Підтримуюче",
+          "deep": "Генеральне",
+          "repair": "Після ремонту"
+        },
+        "extrasLabel": "Додаткові послуги",
+        "extras": {
+          "windows": "Миття вікон (шт)",
+          "oven": "Миття духовки",
+          "fridge": "Миття холодильника"
+        },
+        "totalLabel": "Орієнтовна вартість:",
+        "cta": "Замовити прибирання"
       },
-      "gallery": {
-        "badge": "ВІЗУАЛЬНІ ДАНІ",
-        "title": "Результати роботи",
-        "subtitle": "Реальні клієнти. Реальне освітлення. Жодних стокових фотографій чи ретуші.",
+      "trust": {
+        "badge": "Надійність",
+        "title": "Прозорий чек-лист із 50+ пунктів",
+        "subtitle": "Ви приймаєте роботу за чітким стандартом. Ми не використовуємо одну ганчірку для санвузла та кухні — кольорове кодування інвентарю гарантує гігієну.",
+        "imageUrl": "https://picsum.photos/seed/cleaning-tools-eco/800/800"
+      },
+      "process": {
+        "badge": "Як ми працюємо",
+        "title": "Процес без зайвої комунікації",
+        "steps": [
+          {
+            "title": "Швидка заявка",
+            "desc": "Заповніть форму або калькулятор. Ми підтверджуємо деталі в месенджері без нав'язливих дзвінків."
+          },
+          {
+            "title": "Приїзд клінера",
+            "desc": "Фахівець прибуває вчасно з усім необхідним інвентарем та еко-хімією."
+          },
+          {
+            "title": "Прибирання за чек-листом",
+            "desc": "Ретельне очищення за стандартами. Ви можете займатися своїми справами."
+          },
+          {
+            "title": "Прийом роботи",
+            "desc": "Оплата тільки після того, як ви перевірите якість та залишитесь задоволені."
+          }
+        ]
+      },
+      "beforeAfter": {
+        "badge": "Результат",
+        "title": "До та Після",
         "items": [
-          { "url": "https://picsum.photos/seed/barber-cut1/800/800", "alt": "Чоловіча стрижка кроп" },
-          { "url": "https://picsum.photos/seed/barber-beard2/800/1000", "alt": "Моделювання бороди" },
-          { "url": "https://picsum.photos/seed/barber-fade3/800/800", "alt": "Ідеальний фейд" },
-          { "url": "https://picsum.photos/seed/barber-classic4/800/600", "alt": "Класична стрижка ножицями" },
-          { "url": "https://picsum.photos/seed/barber-tools5/800/800", "alt": "Робочий процес" },
-          { "url": "https://picsum.photos/seed/barber-interior6/800/1000", "alt": "Інтер'єр барбершопу" }
+          {
+            "before": "https://picsum.photos/seed/dirty-kitchen-1/800/600",
+            "after": "https://picsum.photos/seed/clean-kitchen-1/800/600",
+            "label": "Генеральне прибирання кухні"
+          },
+          {
+            "before": "https://picsum.photos/seed/dirty-bathroom-1/800/600",
+            "after": "https://picsum.photos/seed/clean-bathroom-1/800/600",
+            "label": "Очищення санвузла"
+          }
         ]
       },
       "testimonials": {
-        "badge": "ВІДГУКИ СИСТЕМИ",
-        "title": "Верифіковані клієнти",
-        "subtitle": "Дані з незалежних платформ бронювання та Google Maps.",
+        "badge": "Відгуки",
+        "title": "Що кажуть наші клієнти",
         "items": [
-          { "name": "Олександр В.", "role": "IT Specialist", "quote": "Нарешті знайшов майстра, якому не треба щоразу пояснювати, як мене стригти. Орест пам'ятає всі деталі. Стерильність на рівні стоматології.", "rating": 5 },
-          { "name": "Максим К.", "role": "Project Manager", "quote": "Дуже ціную свій час. Запис онлайн працює як годинник, жодних затримок. Стрижка + борода за 1.5 години з ідеальним результатом.", "rating": 5 },
-          { "name": "Дмитро С.", "role": "Студент", "quote": "Адекватна ціна за таку якість. Немає цього пафосу мережевих барбершопів, все чітко, по ділу і дуже професійно.", "rating": 5 },
-          { "name": "Андрій М.", "role": "Підприємець", "quote": "Відкриття крафт-пакету перед клієнтом — це те, що має бути стандартом всюди. Респект за підхід до гігієни.", "rating": 5 }
+          {
+            "name": "Олександр",
+            "role": "IT-фахівець, ЖК Авалон",
+            "text": "Працюю з дому, тому тиша і відсутність різких запахів були критичні. Дівчата впорались ідеально, хімія дійсно без запаху. Монітори і техніку протерли дуже акуратно.",
+            "rating": 5
+          },
+          {
+            "name": "Марія",
+            "role": "Власниця квартир Airbnb",
+            "text": "Для мене головне — швидкість між заїздами. Клінінг Лев ще жодного разу не підвів. Завжди вчасно, постіль змінена, ідеальна чистота. Рекомендую!",
+            "rating": 5
+          },
+          {
+            "name": "Ірина",
+            "role": "Мама в декреті",
+            "text": "Замовляла генеральне прибирання. Дуже сподобалось, що використовують еко-засоби, бо вдома маленька дитина. Відмили духовку, яку я вже думала міняти.",
+            "rating": 5
+          },
+          {
+            "name": "Андрій",
+            "role": "ЖК Семицвіт",
+            "text": "Замовляв прибирання після ремонту. Було багато будівельного пилу. Вимили все до блиску, вікна ідеальні. Ціна по калькулятору співпала з фінальною.",
+            "rating": 5
+          }
         ]
       },
-      "process": {
-        "badge": "АЛГОРИТМ",
-        "title": "Протокол візиту",
-        "subtitle": "Стандартизований процес для досягнення прогнозованого результату.",
-        "steps": [
-          { "title": "Діагностика", "desc": "Аналіз форми голови, напрямку росту волосся та побажань клієнта." },
-          { "title": "Підготовка", "desc": "Миття голови преміальним шампунем для зняття стайлінгу та себуму." },
-          { "title": "Виконання", "desc": "Точна геометрична стрижка з використанням ножиць та машинок." },
-          { "title": "Очищення", "desc": "Повторне миття для видалення всіх залишків зрізаного волосся." },
-          { "title": "Фіксація", "desc": "Сушка, нанесення професійного стайлінгу та інструктаж з домашнього догляду." }
+      "gallery": {
+        "badge": "Портфоліо",
+        "title": "Наші роботи в інтер'єрах Львова",
+        "items": [
+          { "url": "https://picsum.photos/seed/clean-living-1/800/800", "alt": "Прибирання вітальні" },
+          { "url": "https://picsum.photos/seed/clean-kitchen-2/800/800", "alt": "Чиста кухня" },
+          { "url": "https://picsum.photos/seed/clean-bathroom-2/800/800", "alt": "Сяючий санвузол" },
+          { "url": "https://picsum.photos/seed/clean-bedroom-1/800/800", "alt": "Прибрана спальня" },
+          { "url": "https://picsum.photos/seed/clean-windows-1/800/800", "alt": "Миття вікон" },
+          { "url": "https://picsum.photos/seed/clean-hall-1/800/800", "alt": "Прибирання коридору" }
+        ]
+      },
+      "team": {
+        "badge": "Команда",
+        "title": "Професіонали своєї справи",
+        "items": [
+          {
+            "name": "Олена",
+            "role": "Старший клінер",
+            "imageUrl": "https://picsum.photos/seed/cleaner-portrait-1/400/500"
+          },
+          {
+            "name": "Наталія",
+            "role": "Спеціаліст з хімчистки",
+            "imageUrl": "https://picsum.photos/seed/cleaner-portrait-2/400/500"
+          },
+          {
+            "name": "Вікторія",
+            "role": "Клінер",
+            "imageUrl": "https://picsum.photos/seed/cleaner-portrait-3/400/500"
+          }
         ]
       },
       "faq": {
-        "badge": "БАЗА ЗНАНЬ",
+        "badge": "Питання",
         "title": "Часті запитання",
-        "subtitle": "Прозора інформація щодо всіх аспектів нашої роботи.",
         "items": [
-          { "question": "Чи потрібно доплачувати за миття голови?", "answer": "Ні. У нас діє система 'все включено'. Подвійне миття голови, консультація та преміум-стайлінг вже входять у вартість кожної стрижки." },
-          { "question": "Як ви стерилізуєте інструменти?", "answer": "Ми використовуємо медичний триетапний протокол: ультразвукова чистка, замочування в дезрозчині та фінальна стерилізація в сухожаровій шафі при 180°C. Інструменти зберігаються в крафт-пакетах." },
-          { "question": "Чи можу я розрахуватися карткою?", "answer": "Так, ми приймаємо оплату готівкою, банківськими картками (термінал) та через Apple Pay / Google Pay." },
-          { "question": "Скільки часу займає стрижка?", "answer": "Стандартна чоловіча стрижка займає 60 хвилин. Комплекс стрижка + борода — 90 хвилин. Ми не поспішаємо і виділяємо достатньо часу для ідеального результату." },
-          { "question": "Яку косметику ви використовуєте?", "answer": "Ми працюємо виключно з перевіреними світовими брендами: Reuzel, Uppercut Deluxe, Proraso. Цю ж косметику можна придбати у нас для домашнього догляду." },
-          { "question": "Що робити, якщо мені не сподобався результат?", "answer": "У нас діє 'Протокол 72 годин'. Якщо протягом 3 днів ви виявили неточність або вам незручно вкладати волосся — зверніться до нас, і ми виправимо це безкоштовно." },
-          { "question": "Чи є у вас парковка?", "answer": "Так, біля барбершопу є міська паркувальна зона, де зазвичай завжди є вільні місця." },
-          { "question": "Чи стрижете ви дітей?", "answer": "Так, ми надаємо послугу дитячої стрижки для хлопчиків віком до 12 років. Також є вигідний комплекс 'Батько + Син'." },
-          { "question": "Як скасувати або перенести запис?", "answer": "Ви можете зробити це самостійно через посилання в SMS-підтвердженні, або зателефонувавши нам мінімум за 2 години до візиту." },
-          { "question": "Чи працюєте ви під час відключень світла?", "answer": "Так, наш барбершоп обладнаний потужною зарядною станцією, що забезпечує повноцінну роботу освітлення та інструментів." }
+          {
+            "question": "Чи зміниться ціна після приїзду клінера?",
+            "answer": "Ні, якщо ви правильно вказали площу та перелік додаткових послуг у калькуляторі, ціна є фіксованою."
+          },
+          {
+            "question": "Чи безпечна ваша хімія для дітей та тварин?",
+            "answer": "Так, ми використовуємо професійну еко-хімію брендів Sutter та Kiehl. Вона гіпоалергенна і не залишає різких запахів."
+          },
+          {
+            "question": "Що робити, якщо під час прибирання щось пошкодять?",
+            "answer": "Ми несемо матеріальну відповідальність. Наша компанія страхує майно клієнтів на суму до 20 000 грн."
+          },
+          {
+            "question": "Чи потрібно мені бути вдома під час прибирання?",
+            "answer": "Не обов'язково. Ви можете впустити клінера і піти у своїх справах, а повернутися для прийому роботи."
+          },
+          {
+            "question": "Як швидко ви можете приїхати?",
+            "answer": "Ми спеціалізуємося на швидкому реагуванні. Зазвичай ми можемо надати клінера протягом 3 годин з моменту підтвердження заявки."
+          },
+          {
+            "question": "Чи привозите ви свій інвентар?",
+            "answer": "Так, наші фахівці приїжджають з усім необхідним: професійними пилососами, драбинами, серветками (з кольоровим кодуванням) та миючими засобами."
+          },
+          {
+            "question": "Як ви миєте вікна?",
+            "answer": "Ми використовуємо спеціальні стяжки та розчини, що не залишають розводів. Миємо скло, рами, підвіконня та відливи."
+          },
+          {
+            "question": "Чи можна замовити прибирання на вихідні?",
+            "answer": "Так, ми працюємо без вихідних, щоб вам було зручно."
+          },
+          {
+            "question": "Як оплатити послуги?",
+            "answer": "Оплата здійснюється після прийому роботи. Ви можете розрахуватися готівкою або переказом на картку."
+          },
+          {
+            "question": "Що входить у підтримуюче прибирання?",
+            "answer": "Знепилення всіх відкритих поверхонь, миття підлоги та плінтусів, чищення дзеркал, дезінфекція сантехніки, винесення сміття."
+          }
         ]
       },
       "ctaBanner": {
-        "title": "Готові оновити систему?",
-        "subtitle": "Забронюйте час онлайн за 30 секунд. Жодних дзвінків.",
-        "btn": "Відкрити термінал запису"
-      },
-      "contact": {
-        "badge": "КООРДИНАТИ",
-        "title": "Локація та зв'язок",
-        "address": "вул. Прикладна 42, Львів, Україна",
-        "phone": "+38 (099) 123-45-67",
-        "email": "orest.barber.client@example.com",
-        "hours": "Пн-Нд: 10:00 - 21:00",
-        "mapUrl": "https://www.google.com/maps?q=Lviv,Ukraine&output=embed"
+        "title": "Готові до ідеальної чистоти?",
+        "subtitle": "Забронюйте прибирання зараз і отримайте знижку 200 грн на перше замовлення.",
+        "button": "Розрахувати вартість"
       },
       "footer": {
-        "desc": "Точна чоловіча стрижка. Медична стерильність. 100% відповідальність.",
+        "description": "Професійний клінінг у Львові для тих, хто цінує свій час та бездоганний результат.",
+        "contacts": "Контакти",
+        "address": "м. Львів, Україна",
         "rights": "Всі права захищено."
+      }
+    },
+    "en": {
+      "nav": {
+        "services": "Services",
+        "calculator": "Calculator",
+        "advantages": "Advantages",
+        "reviews": "Reviews",
+        "faq": "FAQ"
+      },
+      "hero": {
+        "badge": "Top Cleaning for Modern Apartments",
+        "title": "Flawless Cleanliness. Today, not in a week.",
+        "subtitle": "Professional cleaning in Lviv with a 24h guarantee. Eco-chemistry, property insurance, and fixed pricing.",
+        "ctaPrimary": "Get a quote in 30s",
+        "ctaSecondary": "Our services",
+        "floatingCard": {
+          "title": "Fast Arrival",
+          "desc": "Cleaner arrives within 3 hours or get a 200 UAH discount"
+        },
+        "imageUrl": "https://picsum.photos/seed/lviv-modern-interior/1600/1000"
+      },
+      "socialProof": {
+        "title": "Trusted by residents of top Lviv complexes",
+        "stats": [
+          { "value": "500+", "label": "Happy Clients" },
+          { "value": "24/7", "label": "Support" },
+          { "value": "20k", "label": "Insurance" }
+        ]
+      },
+      "advantages": {
+        "badge": "Why Us",
+        "title": "Systematic approach to cleanliness",
+        "subtitle": "We know how to care for Austrian brick, matte facades, and expensive tech.",
+        "items": [
+          {
+            "title": "Fixed Price",
+            "desc": "Calculated online and doesn't change after arrival.",
+            "icon": "calculator"
+          },
+          {
+            "title": "Eco-chemistry",
+            "desc": "Certified Sutter and Kiehl products, safe for allergies, babies, and pets.",
+            "icon": "leaf"
+          },
+          {
+            "title": "Liability",
+            "desc": "Property insurance up to 20,000 UAH at our expense.",
+            "icon": "shield"
+          },
+          {
+            "title": "24h Guarantee",
+            "desc": "Free correction of any flaws within 24 hours.",
+            "icon": "clock"
+          }
+        ]
+      },
+      "services": {
+        "badge": "Main Services",
+        "title": "What we clean",
+        "items": [
+          {
+            "title": "Standard Cleaning",
+            "desc": "Regular cleaning to maintain perfect cleanliness.",
+            "price": "from 1200 UAH",
+            "imageUrl": "https://picsum.photos/seed/cleaning-standard/800/600"
+          },
+          {
+            "title": "Deep Cleaning",
+            "desc": "Deep cleaning of all surfaces, including hard-to-reach areas.",
+            "price": "from 2500 UAH",
+            "imageUrl": "https://picsum.photos/seed/cleaning-deep/800/600"
+          },
+          {
+            "title": "Post-Repair Cleaning",
+            "desc": "Removal of construction dust, paint, and cement.",
+            "price": "from 3500 UAH",
+            "imageUrl": "https://picsum.photos/seed/cleaning-post-repair/800/600"
+          },
+          {
+            "title": "Airbnb Special",
+            "desc": "Fast cleaning between guests, linen change.",
+            "price": "from 1000 UAH",
+            "imageUrl": "https://picsum.photos/seed/cleaning-airbnb/800/600"
+          }
+        ]
+      },
+      "extraServices": {
+        "badge": "Extras",
+        "title": "Specialized Services",
+        "items": [
+          "Window cleaning",
+          "Dry cleaning of sofas and mattresses",
+          "Carpet dry cleaning",
+          "Oven, fridge, microwave cleaning",
+          "Hood degreasing",
+          "Ironing",
+          "Grout cleaning",
+          "Balcony cleaning"
+        ]
+      },
+      "calculator": {
+        "badge": "Online Quote",
+        "title": "Find out the exact cost",
+        "subtitle": "No hidden fees. Price is fixed upon order.",
+        "areaLabel": "Area (m²)",
+        "typeLabel": "Cleaning Type",
+        "types": {
+          "standard": "Standard",
+          "deep": "Deep",
+          "repair": "Post-Repair"
+        },
+        "extrasLabel": "Extra Services",
+        "extras": {
+          "windows": "Windows (pcs)",
+          "oven": "Oven",
+          "fridge": "Fridge"
+        },
+        "totalLabel": "Estimated cost:",
+        "cta": "Book Cleaning"
+      },
+      "trust": {
+        "badge": "Reliability",
+        "title": "Transparent 50+ point checklist",
+        "subtitle": "You accept work by a strict standard. Color-coded tools guarantee hygiene.",
+        "imageUrl": "https://picsum.photos/seed/cleaning-tools-eco/800/800"
+      },
+      "process": {
+        "badge": "How it works",
+        "title": "Process without extra communication",
+        "steps": [
+          { "title": "Quick Request", "desc": "Fill out the form. We confirm via messenger." },
+          { "title": "Cleaner Arrival", "desc": "Arrives on time with all equipment." },
+          { "title": "Checklist Cleaning", "desc": "Thorough cleaning by standards." },
+          { "title": "Acceptance", "desc": "Pay only after you check the quality." }
+        ]
+      },
+      "beforeAfter": {
+        "badge": "Result",
+        "title": "Before & After",
+        "items": [
+          { "before": "https://picsum.photos/seed/dirty-kitchen-1/800/600", "after": "https://picsum.photos/seed/clean-kitchen-1/800/600", "label": "Kitchen Deep Clean" },
+          { "before": "https://picsum.photos/seed/dirty-bathroom-1/800/600", "after": "https://picsum.photos/seed/clean-bathroom-1/800/600", "label": "Bathroom Clean" }
+        ]
+      },
+      "testimonials": {
+        "badge": "Reviews",
+        "title": "What our clients say",
+        "items": [
+          { "name": "Alex", "role": "IT Professional", "text": "Perfect for remote workers. Quiet and no chemical smells.", "rating": 5 },
+          { "name": "Maria", "role": "Airbnb Host", "text": "Fast and reliable between guests. Highly recommended!", "rating": 5 },
+          { "name": "Iryna", "role": "Mother", "text": "Loved the eco-products. Safe for my baby.", "rating": 5 },
+          { "name": "Andriy", "role": "Homeowner", "text": "Post-repair cleaning was flawless. Price matched the calculator exactly.", "rating": 5 }
+        ]
+      },
+      "gallery": {
+        "badge": "Portfolio",
+        "title": "Our work in Lviv interiors",
+        "items": [
+          { "url": "https://picsum.photos/seed/clean-living-1/800/800", "alt": "Living room" },
+          { "url": "https://picsum.photos/seed/clean-kitchen-2/800/800", "alt": "Kitchen" },
+          { "url": "https://picsum.photos/seed/clean-bathroom-2/800/800", "alt": "Bathroom" },
+          { "url": "https://picsum.photos/seed/clean-bedroom-1/800/800", "alt": "Bedroom" },
+          { "url": "https://picsum.photos/seed/clean-windows-1/800/800", "alt": "Windows" },
+          { "url": "https://picsum.photos/seed/clean-hall-1/800/800", "alt": "Hallway" }
+        ]
+      },
+      "team": {
+        "badge": "Team",
+        "title": "Professionals at work",
+        "items": [
+          { "name": "Olena", "role": "Senior Cleaner", "imageUrl": "https://picsum.photos/seed/cleaner-portrait-1/400/500" },
+          { "name": "Nataliya", "role": "Dry Cleaning Specialist", "imageUrl": "https://picsum.photos/seed/cleaner-portrait-2/400/500" },
+          { "name": "Viktoriya", "role": "Cleaner", "imageUrl": "https://picsum.photos/seed/cleaner-portrait-3/400/500" }
+        ]
+      },
+      "faq": {
+        "badge": "FAQ",
+        "title": "Frequently Asked Questions",
+        "items": [
+          { "question": "Will the price change?", "answer": "No, if details are correct, the price is fixed." },
+          { "question": "Is chemistry safe?", "answer": "Yes, we use eco-friendly Sutter and Kiehl products." },
+          { "question": "What about damages?", "answer": "We are insured up to 20,000 UAH." },
+          { "question": "Do I need to be home?", "answer": "No, you can leave and return for acceptance." },
+          { "question": "How fast can you arrive?", "answer": "Usually within 3 hours." },
+          { "question": "Do you bring equipment?", "answer": "Yes, we bring everything needed." },
+          { "question": "How do you clean windows?", "answer": "With professional squeegees and solutions." },
+          { "question": "Do you work weekends?", "answer": "Yes, we work 7 days a week." },
+          { "question": "How to pay?", "answer": "Cash or card after accepting the work." },
+          { "question": "What's in standard cleaning?", "answer": "Dusting, mopping, mirrors, bathroom disinfection." }
+        ]
+      },
+      "ctaBanner": {
+        "title": "Ready for perfect cleanliness?",
+        "subtitle": "Book now and get a 200 UAH discount on your first order.",
+        "button": "Calculate Cost"
+      },
+      "footer": {
+        "description": "Professional cleaning in Lviv for those who value time and flawless results.",
+        "contacts": "Contacts",
+        "address": "Lviv, Ukraine",
+        "rights": "All rights reserved."
       }
     }
   }

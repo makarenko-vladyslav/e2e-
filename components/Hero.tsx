@@ -1,124 +1,104 @@
 "use client";
-import { useLocale } from "@/lib/i18n";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Button from "./Button";
-import { useRef } from "react";
+import { useLocale } from "@/lib/i18n";
 
 export default function Hero() {
   const { t } = useLocale();
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]);
-
-  const stats = t("hero.stats") as { value: string; label: string }[];
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 300]);
 
   return (
-    <section ref={ref} className="relative min-h-[70vh] flex items-center pt-32 pb-16 overflow-hidden bg-primary">
-      {/* Background Image with Parallax */}
-      <motion.div 
-        style={{ y, opacity }}
-        className="absolute inset-0 w-full h-full z-0"
-      >
+    <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden bg-primary">
+      {/* Parallax Background Image */}
+      <motion.div style={{ y }} className="absolute inset-0 w-full h-[120%] -top-[10%]">
         <img 
-          src={t("hero.imageUrl")} 
-          alt="Barber precision" 
-          className="w-full h-full object-cover opacity-30 mix-blend-luminosity"
+          src={t('hero.imageUrl') as string} 
+          alt="Clean interior" 
+          className="w-full h-full object-cover"
         />
-        {/* Technical Grid Overlay */}
-        <div className="absolute inset-0 bg-tech-grid-dark opacity-30 mix-blend-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/60 to-primary/95 mix-blend-multiply" />
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
         
-        {/* Left: Typography & Data */}
-        <div className="max-w-2xl">
-          <motion.div
+        {/* Text Content */}
+        <div className="lg:col-span-7 pt-20">
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.6 }}
+            className="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-accent/30 bg-accent/10 mb-6">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-accent font-display text-xs tracking-widest uppercase">{t("hero.badge")}</span>
-            </div>
-            
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-white leading-[1.1] mb-6 tracking-tight">
-              {t("hero.title").split('.').map((part: string, i: number, arr: any[]) => (
-                <span key={i}>
-                  {part}{i < arr.length - 1 ? <span className="text-accent">.</span> : ''}
-                  {i < arr.length - 1 && <br />}
-                </span>
-              ))}
-            </h1>
-            
-            <p className="text-lg text-slate-300 mb-8 max-w-xl font-light leading-relaxed">
-              {t("hero.subtitle")}
-            </p>
-            
-            <div className="flex flex-wrap gap-4 mb-12">
-              <Button variant="primary">
-                {t("hero.cta")}
-                <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
+            ✨ {t('hero.badge') as string}
+          </motion.div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-5xl md:text-7xl font-display font-bold text-white leading-[1.1] tracking-tight mb-6"
+          >
+            {t('hero.title') as string}
+          </motion.h1>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg md:text-xl text-white/80 max-w-xl mb-10 leading-relaxed"
+          >
+            {t('hero.subtitle') as string}
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-wrap gap-4"
+          >
+            <a href="#calculator" className="px-8 py-4 bg-accent hover:bg-accent-hover text-white rounded-full font-bold transition-all hover:scale-105 shadow-[0_0_30px_hsl(185_80%_40%/0.3)]">
+              {t('hero.ctaPrimary') as string}
+            </a>
+            <a href="#services" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm border border-white/20 rounded-full font-bold transition-all">
+              {t('hero.ctaSecondary') as string}
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Floating Trust Card */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9, rotate: -5 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 100, delay: 0.5 }}
+          className="lg:col-span-5 hidden lg:block"
+        >
+          <div className="dark-glass p-8 rounded-3xl shadow-2xl relative animate-float">
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-accent/30 rounded-full blur-2xl" />
+            <div className="flex items-start gap-6">
+              <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                <svg className="w-8 h-8 text-accent-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-              </Button>
-              <Button variant="outline" className="text-white border-white/20 hover:bg-white/5">
-                {t("hero.secondaryCta")}
-              </Button>
-            </div>
-
-            {/* Stats Grid */}
-            <div className="grid grid-cols-3 gap-6 border-t border-white/10 pt-8">
-              {stats.map((stat, i) => (
-                <motion.div 
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + (i * 0.1) }}
-                >
-                  <div className="text-3xl font-display font-bold text-white mb-1">{stat.value}</div>
-                  <div className="text-xs text-slate-400 uppercase tracking-wider">{stat.label}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Right: Technical Visual (Hidden on mobile for cleaner look) */}
-        <div className="hidden lg:block relative h-[450px]">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="absolute inset-0 border border-white/10 bg-white/5 backdrop-blur-sm p-4"
-          >
-            <div className="w-full h-full border border-accent/20 relative overflow-hidden">
-              {/* Scanning line animation */}
-              <motion.div 
-                animate={{ y: ["0%", "100%", "0%"] }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                className="absolute top-0 left-0 w-full h-[2px] bg-accent shadow-[0_0_15px_hsl(215_90%_45%)] z-20"
-              />
-              <img 
-                src="https://picsum.photos/seed/barber-close/600/800" 
-                alt="Precision cut" 
-                className="w-full h-full object-cover opacity-60 grayscale"
-              />
-              {/* UI Overlays */}
-              <div className="absolute top-4 left-4 text-[10px] font-mono text-accent">
-                [TRG: LOCKED]<br/>
-                [ANG: 45.2°]
               </div>
-              <div className="absolute bottom-4 right-4 text-[10px] font-mono text-accent text-right">
-                SYS.OP: OREST<br/>
-                LVL: MASTER
+              <div>
+                <h3 className="text-2xl font-display font-bold text-white mb-2">{(t('hero.floatingCard') as any).title}</h3>
+                <p className="text-white/70 leading-relaxed">{(t('hero.floatingCard') as any).desc}</p>
               </div>
             </div>
-          </motion.div>
-        </div>
+            
+            <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
+              <div className="flex -space-x-3">
+                {[1,2,3,4].map(i => (
+                  <img key={i} src={`https://picsum.photos/seed/avatar${i}/100/100`} className="w-10 h-10 rounded-full border-2 border-primary object-cover" alt="Client" />
+                ))}
+              </div>
+              <div className="text-right">
+                <div className="flex text-accent-light text-sm">★★★★★</div>
+                <span className="text-white/60 text-xs font-medium">500+ відгуків</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
 
       </div>
     </section>

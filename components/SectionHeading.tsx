@@ -1,4 +1,3 @@
-
 "use client";
 import { motion } from "framer-motion";
 
@@ -12,27 +11,42 @@ interface SectionHeadingProps {
 
 export default function SectionHeading({ badge, title, subtitle, centered = false, light = false }: SectionHeadingProps) {
   return (
-    <div className={`mb-16 ${centered ? 'text-center' : 'text-left'}`}>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
+    <div className={`mb-16 ${centered ? "text-center" : "text-left"}`}>
+      <motion.span 
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        className="text-accent font-bold tracking-wider uppercase text-sm mb-4 block"
       >
-        <span className="inline-flex items-center gap-2 text-accent font-display font-bold tracking-[0.1em] uppercase text-xs mb-4">
-          <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          {badge}
-        </span>
-        <h2 className={`text-4xl md:text-5xl font-display font-bold mb-6 ${light ? 'text-white' : 'text-primary'} tracking-tight`}>
-          {title}
-        </h2>
-        <div className={`w-16 h-1 bg-accent mb-6 ${centered ? 'mx-auto' : ''}`} />
-        {subtitle && (
-          <p className={`text-lg max-w-2xl ${centered ? 'mx-auto' : ''} ${light ? 'text-slate-300' : 'text-text-muted'}`}>
-            {subtitle}
-          </p>
-        )}
-      </motion.div>
+        {badge}
+      </motion.span>
+      <motion.h2 
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.1 }}
+        className={`text-4xl md:text-5xl font-display font-bold mb-6 ${light ? "text-white" : "text-primary"}`}
+      >
+        {title}
+      </motion.h2>
+      <motion.div 
+        initial={{ width: 0 }}
+        whileInView={{ width: 64 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.5 }}
+        className={`h-1 bg-accent rounded-full mb-6 ${centered ? "mx-auto" : ""}`}
+      />
+      {subtitle && (
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className={`text-lg max-w-2xl ${centered ? "mx-auto" : ""} ${light ? "text-white/80" : "text-text-muted"}`}
+        >
+          {subtitle}
+        </motion.p>
+      )}
     </div>
   );
 }

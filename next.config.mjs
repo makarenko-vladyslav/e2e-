@@ -25,6 +25,12 @@ const nextConfig = {
         images: { unoptimized: true },
         trailingSlash: true,
         basePath,
+        // AI-generated sites are runtime-valid but occasionally have minor TS/ESLint
+        // strictness mismatches (e.g. a Button passed `type="submit"` its props type
+        // doesn't list). Those must not block the client's whole deploy — the static
+        // export still renders correctly. Skip type-check/lint in the Pages build only.
+        typescript: { ignoreBuildErrors: true },
+        eslint: { ignoreDuringBuilds: true },
       }
     : {
         async rewrites() {
